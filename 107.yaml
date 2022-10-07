@@ -5,43 +5,51 @@ mode: Rule
 log-level: info
 external-controller: :9090
 proxies:
+  - {name: sl, server: 2606:4700:83b4:d227:a75e:ea28:ebe1:1c79, port: 443, type: vmess, uuid: 72e5d747-ed12-4580-b263-5174cd8c51f7, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /fukgfw, ws-headers: {Host: v.11ki.cf}, udp: true}
   - {name: h2, server: 172.67.160.75, port: 443, type: vmess, uuid: 8aa6e6c7-52ed-43e5-90da-15cfd8814122, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /fctgfw, ws-headers: {Host: v.11ki.tk}, udp: true}
   - {name: sgv6, server: 2606:4700:83b4:d227:a75e:ea28:ebe1:1c79, port: 443, type: vmess, uuid: a1a8e090-ae30-48f7-f090-7b68fcf1abea, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /, ws-headers: {Host: l.7key.tk}, udp: true}
+  - {name: wq, server: 172.67.160.75, port: 443, type: vmess, uuid: d87d0209-aa77-4c7c-f76b-d8842b87e919, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /fukgfw, ws-headers: {Host: v.ntjoy.tk}, udp: true}
   - {name: sgv6 2, server: 172.67.160.75, port: 443, type: vmess, uuid: a1a8e090-ae30-48f7-f090-7b68fcf1abea, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /, ws-headers: {Host: l.7key.tk}, udp: true}
-  - {name: sl, server: 172.67.160.75, port: 443, type: vmess, uuid: 72e5d747-ed12-4580-b263-5174cd8c51f7, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /fukgfw, ws-headers: {Host: v.11ki.cf}, udp: true}
-  - {name: sl 2, server: 110.43.204.172, port: 443, type: vmess, uuid: 72e5d747-ed12-4580-b263-5174cd8c51f7, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /fukgfw, ws-headers: {Host: v.11ki.cf}, udp: true}
+  - {name: sl 2, server: 172.67.160.75, port: 443, type: vmess, uuid: 72e5d747-ed12-4580-b263-5174cd8c51f7, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /fukgfw, ws-headers: {Host: v.11ki.cf}, udp: true}
+  - {name: sl 3, server: 139.162.39.93, port: 443, type: vmess, uuid: 72e5d747-ed12-4580-b263-5174cd8c51f7, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-path: /fukgfw, ws-headers: {Host: v.11ki.cf}, udp: true}
 proxy-groups:
   - name: 🔰 节点选择
     type: select
     proxies:
       - ♻️ 自动选择
       - 🎯 全球直连
+      - sl
       - h2
       - sgv6
+      - wq
       - sgv6 2
-      - sl
       - sl 2
+      - sl 3
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     proxies:
+      - sl
       - h2
       - sgv6
+      - wq
       - sgv6 2
-      - sl
       - sl 2
+      - sl 3
   - name: 🎥 NETFLIX
     type: select
     proxies:
       - 🔰 节点选择
       - ♻️ 自动选择
       - 🎯 全球直连
+      - sl
       - h2
       - sgv6
+      - wq
       - sgv6 2
-      - sl
       - sl 2
+      - sl 3
   - name: ⛔️ 广告拦截
     type: select
     proxies:
@@ -60,11 +68,13 @@ proxy-groups:
       - 🔰 节点选择
       - ♻️ 自动选择
       - 🎯 全球直连
+      - sl
       - h2
       - sgv6
+      - wq
       - sgv6 2
-      - sl
       - sl 2
+      - sl 3
   - name: 🌏 国内媒体
     type: select
     proxies:
@@ -75,32 +85,38 @@ proxy-groups:
     proxies:
       - 🎯 全球直连
       - 🔰 节点选择
+      - sl
       - h2
       - sgv6
+      - wq
       - sgv6 2
-      - sl
       - sl 2
+      - sl 3
   - name: 📲 电报信息
     type: select
     proxies:
       - 🔰 节点选择
       - 🎯 全球直连
+      - sl
       - h2
       - sgv6
+      - wq
       - sgv6 2
-      - sl
       - sl 2
+      - sl 3
   - name: 🍎 苹果服务
     type: select
     proxies:
       - 🔰 节点选择
       - 🎯 全球直连
       - ♻️ 自动选择
+      - sl
       - h2
       - sgv6
+      - wq
       - sgv6 2
-      - sl
       - sl 2
+      - sl 3
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -116,11 +132,13 @@ proxy-groups:
       - 🔰 节点选择
       - 🎯 全球直连
       - ♻️ 自动选择
+      - sl
       - h2
       - sgv6
+      - wq
       - sgv6 2
-      - sl
       - sl 2
+      - sl 3
 rules:
  - DOMAIN-SUFFIX,local,🎯 全球直连
  - IP-CIDR,192.168.0.0/16,🎯 全球直连,no-resolve
